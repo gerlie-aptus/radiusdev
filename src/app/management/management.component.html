@@ -1,0 +1,15 @@
+<a href="" (click)="logout()">Logout</a>
+
+<h3>Security Settings</h3>
+<label>Username:</label> <input type="text" name="username" placeholder="Enter new username"><br><br>
+<label>Password:</label> <input type="password" name="password" placeholder="********"><br><br>
+<label>Confirm Password:</label> <input type="password" name="confirm_password" placeholder="********">
+
+<hr>
+
+<h3>Service Settings</h3>
+<label>Redirection:</label> <input type="text" name="redirection" placeholder="Redirection URL"><br><br>
+<label>Use Static IP:</label> <input type="text" name="static_ip" placeholder="0.0.0.0"><br>
+
+<br><br>
+<input type="submit" value="Submit" (click)="ping()">
