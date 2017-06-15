@@ -3,6 +3,8 @@ import { ManagementService } from '../services/management.service';
 // import {environment} from "../../environments/environment";
 import { Router } from '@angular/router';
 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
     moduleId: module.id,
     selector: 'app-management',
@@ -12,13 +14,30 @@ import { Router } from '@angular/router';
 })
 
 export class ManagementComponent implements OnInit {
+    managementForm : FormGroup;
 
-    constructor(private router: Router, private managementService : ManagementService) {
 
+    constructor(private router: Router, private managementService : ManagementService, private  fb: FormBuilder) {
+        this.createForm();
     }
 
     ngOnInit() {
 
+    }
+
+    createForm(){
+        this.managementForm = this.fb.group({
+            username: ['', Validators.required ],
+            password: '',
+            confirmPassword: '',
+            redirection: '',
+            static_ip: ''
+        });
+    }
+
+    submitForm(value: any):void{
+        console.log('Reactive Form Data: ')
+        console.log(value);
     }
 
     ping(){
