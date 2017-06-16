@@ -2,17 +2,53 @@
 
 <form (ngSubmit)="submitForm(managementForm.value)" [formGroup]="managementForm" novalidate>
     <h3>Security Settings</h3>
-    <label>Username:</label> <input type="email" placeholder="Enter new username" name="username"  formControlName="username"><br><br>
-    <label>Password:</label> <input type="password" placeholder="********" formControlName="password"><br><br>
-    <label>Confirm Password:</label> <input type="password" placeholder="********" formControlName="confirmPassword">
+    <label>Username:</label>
+    <input type="email" placeholder="Enter new username" formControlName="username">
+
+    <div formGroupName="passwords">
+        <label>Password:</label> <input type="password" placeholder="********" formControlName="password">
+        <label>Confirm Password:</label> <input type="password" placeholder="********" formControlName="confirmPassword">
+    </div>
 
     <hr>
 
     <h3>Service Settings</h3>
-    <label>Redirection:</label> <input type="text" placeholder="Redirection URL" formControlName="redirection"><br><br>
-    <label>Use Static IP:</label> <input type="text" placeholder="0.0.0.0" formControlName="static_ip"><br>
 
-    <br><br>
+    <div>
+        <label>Redirection:</label>
+        <input type="url" placeholder="Redirection URL" formControlName="redirection"><br><br>
+    </div>
+
+    <div class="input-field">
+        <label>Use Static IP:</label>
+        <input type="text" placeholder="0.0.0.0" formControlName="static_ip">
+    </div>
+
+    <div>
+        <label>Wall Garden</label>
+        <select class="input-field" >
+            <option value="">Select Garden</option>
+            <option>Prepaid Garden</option>
+            <option>Postpaid Garden</option>
+            <option>Credit Garden</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Shape Service:</label>
+        <select [formControl]="shapeControl">
+            <option value="">Select Shape</option>
+            <option>64/64 Download/Upload</option>
+            <option>Penalty</option>
+            <option>Exceed Usage</option>
+        </select>
+    </div>
+    
+    <div>
+        <label for="">Kick User:</label>
+        <input type="checkbox"> Yes
+    </div>
+
     <input type="submit" value="Submit">
 
     <p>Form status: {{ managementForm.status | json }}</p>
