@@ -1,0 +1,23 @@
+<p>
+    accounts works!
+
+</p>
+
+<ul>
+    <li *ngFor="let account of accounts">{{account.name}}
+        <ul>
+            <strong>Gardens</strong>
+            <li *ngFor="let garden of account.gardens">{{garden}}</li>
+        </ul><br>
+        <ul>
+            <strong>Shapes</strong>
+            <li *ngFor="let shape of account.shapes">{{shape}}</li>
+        </ul>
+    </li>
+
+
+
+
+
+
+</ul>

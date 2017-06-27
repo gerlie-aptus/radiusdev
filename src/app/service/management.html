@@ -1,0 +1,167 @@
+<div class="row">
+    <div class="col">
+        <div class="widget">
+
+            <div class="row">
+                <div class="col">
+                    <form (ngSubmit)="submitForm(managementForm.value)" [formGroup]="managementForm" novalidate>
+                        <h4>Security Settings</h4>
+
+                        <!--Username-->
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group" [ngClass]="{'has-danger': managementForm.get('username').touched && managementForm.get('username').errors, 'has-success': managementForm.get('username').touched && managementForm.get('username').valid}">
+                                    <label class="form-control-label">Username</label>
+                                    <input type="email" class="form-control" name="username" formControlName="username" [ngClass]="{'form-control-danger': managementForm.get('username').touched && managementForm.get('username').errors, 'form-control-success': managementForm.get('username').touched && managementForm.get('username').valid}">
+
+                                    <p *ngIf="managementForm.get('username').touched && managementForm.get('username').errors" class="form-control-feedback text-danger">Please enter a valid username</p>
+                                    <p *ngIf="managementForm.get('username').touched && managementForm.get('username').valid" class="form-control-feedback text-success">Username is valid</p>
+                                    <p *ngIf="managementForm.get('username').touched && managementForm.get('username').errors" class="form-control-feedback text-danger">{{ managementForm.controls.username?.errors.remote }}</p>
+                                    <p *ngIf="!managementForm.get('username').errors && response?.username?.length > 0" class="form-control-feedback text-success">{{response.username}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--Passwords-->
+                        <div formGroupName="passwords">
+                            <!--Password-->
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group" [ngClass]="{'has-danger': managementForm.get('passwords').touched && managementForm.get('passwords').get('password').errors, 'has-success': managementForm.get('passwords').touched && managementForm.get('passwords').get('password').valid}">
+                                    <label class="form-control-label">Password</label>
+                                    <input type="password" class="form-control" formControlName="password"  formControlName="password" [ngClass]="{'form-control-danger': managementForm.get('passwords').touched && managementForm.get('passwords').errors, 'form-control-success': managementForm.get('passwords').touched && managementForm.get('passwords').valid}">
+                                </div>
+                            </div>
+
+                            <!--Confirm Password-->
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group" [ngClass]="{'has-danger': managementForm.get('passwords').touched && managementForm.get('passwords').errors, 'has-success': managementForm.get('passwords').touched && managementForm.get('passwords').valid}">
+                                    <label class="form-control-label">Confirm Password</label>
+                                    <input type="password" class="form-control" formControlName="confirmPassword" [ngClass]="{'form-control-danger': managementForm.get('passwords').touched && managementForm.get('passwords').errors, 'form-control-success': managementForm.get('passwords').touched && managementForm.get('passwords').valid}">
+                                </div>
+
+                                <p *ngIf="managementForm.get('passwords').touched && managementForm.get('passwords').errors" class="form-control-feedback text-danger">{{ managementForm.controls.passwords?.errors.remote }}</p>
+                                <p *ngIf="managementForm.get('passwords').touched && !managementForm.get('passwords').errors && response?.passwords?.length > 0" class="form-control-feedback text-success">{{response.passwords}}</p>
+                            </div>
+                        </div>
+
+
+
+                        <h4>Service Settings</h4>
+
+                        <!--Redirection URL-->
+                        <!--<div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group" [ngClass]="{'has-danger': managementForm.get('redirection').touched && managementForm.get('redirection').errors, 'has-success': managementForm.get('redirection').touched && managementForm.get('redirection').valid}">
+                                    <label class="form-control-label">Redirection URL</label>
+                                    <input type="url" class="form-control" placeholder="https://2sg.au/payment-terms" formControlName="redirection" [ngClass]="{'form-control-danger': managementForm.get('redirection').touched && managementForm.get('redirection').errors, 'form-control-success': managementForm.get('redirection').touched && managementForm.get('redirection').valid}">
+                                    <small *ngIf="managementForm.get('redirection').touched && managementForm.get('redirection').errors" class="form-control-feedback text-danger">Please enter a valid URL</small>
+                                    <small *ngIf="managementForm.get('redirection').touched && managementForm.get('redirection').valid" class="form-control-feedback text-success">URL is valid</small>
+                                </div>
+                            </div>
+                        </div>-->
+
+                        <!--Static IP-->
+                        <!--<div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group" [ngClass]="{'has-danger': managementForm.get('static_ip').touched && managementForm.get('static_ip').errors, 'has-success': managementForm.get('static_ip').touched && managementForm.get('static_ip').valid}">
+                                    <label class="form-control-label">Static IP</label>
+                                    <input type="url" class="form-control" placeholder="0.0.0.0" formControlName="static_ip" [ngClass]="{'form-control-danger': managementForm.get('static_ip').touched && managementForm.get('static_ip').errors, 'form-control-success': managementForm.get('static_ip').touched && managementForm.get('static_ip').valid}" ng-pattern='/^([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})$/'> BRB ON THIS!!!!!
+                                    <small *ngIf="managementForm.get('static_ip').touched && managementForm.get('static_ip').errors" class="form-control-feedback text-danger">Please enter a valid IP</small>
+                                    <small *ngIf="managementForm.get('static_ip').touched && managementForm.get('static_ip').valid" class="form-control-feedback text-success">IP is valid</small>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group form-inline" [ngClass]="{'has-danger': managementForm.get('ip_group').touched && managementForm.get('ip_group').errors, 'has-success': managementForm.get('ip_group').touched && managementForm.get('ip_group').valid}">
+                                    <label class="form-control-label">IP Group &nbsp;&nbsp;</label>
+                                    <input type="email" class="form-control" maxlength="3" name="ip_group" formControlName="ip_group" [ngClass]="{'form-control-danger': managementForm.get('ip_group').touched && managementForm.get('ip_group').errors, 'form-control-success': managementForm.get('ip_group').touched && managementForm.get('ip_group').valid}">&nbsp;&nbsp;
+
+                                    <button class="btn btn-danger btn-outline btn-icon btn-sm" type="button">
+                                        <i class="sli-trash"></i>
+                                        <span class="btn-text">Delete Static IP</span>
+                                    </button>
+
+
+                                    <p *ngIf="managementForm.get('ip_group').touched && managementForm.get('ip_group').errors" class="form-control-feedback text-danger">{{ managementForm.controls.ip_group?.errors.remote }}</p>
+                                    <p *ngIf="managementForm.get('ip_group').touched && managementForm.get('ip_group').valid" class="form-control-feedback text-success">IP Group is valid. </p>
+                                    <p *ngIf="managementForm.get('ip_group').touched && !managementForm.get('ip_group').errors && response?.static_ip?.length > 0" class="form-control-feedback text-success">Static IP has been updated successfully. Assigned IP: {{response.static_ip}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--Wall Garden-->
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group" [ngClass]="{'form-control-danger': managementForm.get('garden').touched && managementForm.get('garden').errors, 'form-control-success': managementForm.get('garden').touched && managementForm.get('garden').valid}">
+                                    <label class="form-control-label">Wall Garden</label>
+                                    <select class="custom-select" formControlName="garden" formControlName="garden">
+                                        <option value="" selected>Select Garden</option>
+                                        <option value="credit_prepaid">Prepaid Garden</option>
+                                        <option value="credit_postpaid">Postpaid Garden</option>
+                                        <option value="credit">Credit Garden</option>
+                                    </select>&nbsp;
+
+                                    <button class="btn btn-danger btn-outline btn-icon btn-sm" type="button">
+                                        <i class="sli-trash"></i>
+                                        <span class="btn-text">Delete Garden</span>
+                                    </button>
+
+                                    <p *ngIf="managementForm.get('garden').touched && managementForm.get('garden').errors" class="form-control-feedback text-danger">{{ managementForm.controls.garden?.errors.remote }}</p>
+                                    <p *ngIf="!managementForm.get('garden').errors && response?.garden?.length > 0" class="form-control-feedback text-success">{{response.garden}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group" [ngClass]="{'form-control-danger': managementForm.get('shape').touched && managementForm.get('shape').errors, 'form-control-success': managementForm.get('shape').touched && managementForm.get('shape').valid}">
+                                    <label>Shape Service:</label>
+                                    <select class="custom-select" formControlName="shape">
+                                        <option value="">Select Shape</option>
+                                        <option value="level_one">Level One</option>
+                                        <option value="level_two">Level Two</option>
+                                        <option value="exceed_usage">Exceed Usage</option>
+                                        <option value="penalty">Penalty</option>
+                                    </select>&nbsp;
+
+                                    <button class="btn btn-danger btn-outline btn-icon btn-sm" type="button">
+                                        <i class="sli-trash"></i>
+                                        <span class="btn-text">Delete Shape</span>
+                                    </button>
+
+                                    <p *ngIf="managementForm.get('shape').touched && managementForm.get('shape').errors" class="form-control-feedback text-danger">{{ managementForm.controls.shape?.errors.remote }}</p>
+                                    <p *ngIf="!managementForm.get('shape').errors && response?.shape?.length > 0" class="form-control-feedback text-success">{{response.shape}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-control custom-checkbox form-control-label">
+                                        <span class="custom-control-description">Check to Kick user then submit</span>
+                                        <input type="checkbox" class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <input type="submit" value="Submit" class="btn btn-primary" [disabled]="managementForm.controls.garden?.errors && managementForm.controls.ip_group?.errors">
+                            </div>
+                        </div>
+                        <!--<p>Form status: {{ managementForm.status | json }}</p>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
