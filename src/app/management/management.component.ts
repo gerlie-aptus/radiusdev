@@ -57,10 +57,10 @@ export class ManagementComponent implements OnInit {
             this.managementForm.controls[i].markAsTouched();
         }
 
-        this.managementService.manageService(value).subscribe(res => {
+        /*this.managementService.manageService(value).subscribe(res => {
             console.log('res:');
             console.log(res.body);
-        });
+        });*/
     }
 
     ping(){

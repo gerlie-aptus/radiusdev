@@ -15,6 +15,7 @@ import {Navbar1Component} from './elements/navbar-1';
 import {RightSidebar1Component} from './elements/right-sidebar-1';
 import {TopNavigation1Component} from './elements/top-navigation-1';
 import {TopNavigation2Component} from './elements/top-navigation-2';
+import {Messages} from './elements/messages';
 
 //Radius
 import {routing}  from './app.routing';
@@ -41,6 +42,7 @@ import {LoginComponent} from './pages/login.component';
         RightSidebar1Component,
         TopNavigation1Component,
         TopNavigation2Component,
+        Messages,
 
         ManagementComponent,
         UsageComponent,

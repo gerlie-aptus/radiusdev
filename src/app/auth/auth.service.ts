@@ -17,7 +17,7 @@ export class AuthService {
 
     authenticateNow(usercreds) {
         var headers = new Headers();
-        var creds = 'email=' + usercreds.username + '&password=' + usercreds.password;
+        var creds = 'username=' + usercreds.username + '&password=' + usercreds.password;
 
         headers.append('Content-Type', 'application/X-www-form-urlencoded');
 

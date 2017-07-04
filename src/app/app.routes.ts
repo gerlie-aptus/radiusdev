@@ -1,7 +1,8 @@
 /**
  * Created by gerlie on 6/2/17.
  */
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
 
 import { AuthManager } from './auth';
 import { LoginComponent } from './pages/login.component';
@@ -21,7 +22,7 @@ export const appRoutes: Routes = [
         component: EmptyPageComponent
     },
     {
-        path:'service/management',
+        path:'service/management/:service_id',
         canActivate: [AuthManager],
         component: ManagementComponent
     },
@@ -57,4 +58,4 @@ export const appRoutes: Routes = [
     { path: '**', component: ErrorPageComponent },
 ];
 
-//export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+// export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
