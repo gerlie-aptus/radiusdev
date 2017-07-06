@@ -39,7 +39,8 @@ export class AuthManager implements CanActivate {
 
 
         console.log('You must be logged in');
-        this.router.navigate(['/pages/login'] /*, { queryParams: { returnUrl: state.url }} */ );
+
+        this.router.navigate(['/pages/login'] , { queryParams: { returnUrl: state.url }} );
         return false;
     }
 

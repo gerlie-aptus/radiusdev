@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -13,14 +13,16 @@ export class LoginComponent implements OnInit {
         username: '',
         password: ''
     };
+    returnUrl: any;
 
-    constructor(private auth: AuthService, private router: Router) {
+    constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {
         console.log('login component');
     }
 
     ngOnInit() {
         // reset login status
         this.auth.logout();
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     login() {
@@ -28,8 +30,8 @@ export class LoginComponent implements OnInit {
         let checknow = this.auth.authenticateNow(this.localUser);
         checknow.then((res) => {
             if (res) {
-                console.log('login redirect to service management');
-                this.router.navigate(['service/management']);
+                console.log('redirect:'+this.returnUrl);
+                this.router.navigate([this.returnUrl]);
             } else {
                 console.log('Invalid user');
             }

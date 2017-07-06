@@ -1,0 +1,29 @@
+<div class="row error-login" *ngIf="errorLogin">
+    <div class="col">
+        <div class="alert alert-danger" role="alert" [routerLink]="['/pages/login']">
+            Error: You are not logged in or your token has expired!
+            <strong>Click here to login</strong>
+        </div>
+    </div>
+</div>
+<div class="row error-msg" *ngIf="error">
+    <div class="col">
+        <div class="alert alert-danger" role="alert">
+            Error: {{error}}
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="success">
+    <div class="col">
+        <div class="alert alert-success" role="alert">
+            Info: {{success}}
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="info">
+    <div class="col">
+        <div class="alert alert-info" role="alert">
+            Info: {{info}}
+        </div>
+    </div>
+</div>

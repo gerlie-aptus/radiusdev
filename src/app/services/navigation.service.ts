@@ -2,20 +2,26 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class NavigationService {
-
   navigation: Array<Object> = [
     {
       "title": "Menu",
       "items": [
-        {
+        /*{
           "url": "/accounts/list",
           "icon": "sli-chart",
           "title": "List Accounts",
           "items": [],
           "id": "list-accounts"
+        },*/
+        {
+          "url": "/servicedetails/view/",
+          "icon": "sli-chart",
+          "title": "View Service Details",
+          "items": [],
+          "id": "service-details"
         },
         {
-          "url": "/service/management",
+          "url": "/service/management/",
           "icon": "sli-chart",
           "title": "Service Management",
           "items": [],
@@ -66,5 +72,4 @@ export class NavigationService {
   getNavigation(): Array<Object> {
     return this.navigation;
   }
-
 }

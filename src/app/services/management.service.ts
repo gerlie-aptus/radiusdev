@@ -12,6 +12,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 @Injectable()
 export class ManagementService {
     apiUrl = environment.apiUrl;
+    errorLogin = false;
 
     constructor(public authHttp: AuthHttp, private router: Router) {
         console.log('Display Main Form');
@@ -19,49 +20,63 @@ export class ManagementService {
 
     ping() {
         try {
-            if(tokenNotExpired('token')){
-                return this.authHttp.get(this.apiUrl + 'ping').map(res => res.json());
-            } else {
-                console.log('Token is expired. ms');
-                this.router.navigate(['/pages/login']);
-            }
+            return this.authHttp.get(this.apiUrl + 'ping').map(res => res.json());
         } catch (err) {
             console.log("err:"+err);
         }
     }
 
-    manageService(body: Object) {
+    manageService(body: Object, apiUrl: string, method: string) {
         let bodyString = JSON.stringify(body);
-
-        console.log(bodyString);
+        console.log('bodyString manageservice:'+bodyString);
         try {
-            if(tokenNotExpired('token')){
-                return this.authHttp.post(this.apiUrl + 'service/manage', bodyString)
-                                    .map(this.extractData)
-                                    .catch(this.handleError);
-            } else {
-                console.log('Token is expired.');
-                this.router.navigate(['/pages/login']);
-            }
+                switch (method){
+                    case 'post': {
+                        return this.authHttp.post(apiUrl, bodyString).map(this.extractData).catch(this.handleError);
+                    }
+                    case 'get': {
+                        return this.authHttp.get(apiUrl, bodyString).map(this.extractData).catch(this.handleError);
+                    }
+                    case 'put': {
+                        return this.authHttp.put(apiUrl, bodyString).map(this.extractData).catch(this.handleError);
+                    }
+                    case 'delete':{
+                        return this.authHttp.delete(apiUrl, bodyString).map(this.extractData).catch(this.handleError);
+                    }
+
+                }
         } catch (err) {
             console.log("err:"+err);
         }
     }
 
+    createService(body: Object) {
+        let bodyString = JSON.stringify(body);
+        console.log('bodyString:'+bodyString);
+        try {
+            return this.authHttp.post(environment.apiUrl+'services', bodyString).map(this.extractData).catch((err) => { console.log(err); return Observable.throw(err); });
+        } catch (err) {
+            console.log("err:"+err);
+        }
+    }
+
+    getServiceDetails(service_id: number){
+        return this.authHttp.get(environment.apiUrl+'radius_service_id/'+service_id).map(this.extractData).catch((err) => { return Observable.throw(err); });
+    }
 
     /*BRB: make it shared*/
     private extractData(res: Response) {
         console.log('extract:');
-        //let body = res.json();
+        console.log(res);
         let body = res.json();
+        console.log('body extractdata services:');
         console.log(body);
-        // return body.data || { };
         return body;
     }
 
     private handleError (error: Response | any) {
-        // In a real world app, you might use a remote logging infrastructure
         let errMsg: string;
+        console.error(error);
         if (error instanceof Response) {
             const body = error.json() || '';
             const err = body.error || JSON.stringify(body);
@@ -69,7 +84,7 @@ export class ManagementService {
         } else {
             errMsg = error.message ? error.message : error.toString();
         }
-        console.error(errMsg);
+
         return Observable.throw(errMsg);
     }
 }

@@ -6,6 +6,7 @@ import { Http, Headers } from '@angular/http';
 import {environment} from '../../environments/environment';
 
 import { tokenNotExpired } from 'angular2-jwt';
+import {ActivatedRoute} from "@angular/router";
 
 @Injectable()
 export class AuthService {
@@ -13,11 +14,13 @@ export class AuthService {
     isAuthenticated: boolean = false;
     apiUrl = environment.apiUrl;
 
-    constructor(private http: Http) {}
+    constructor(private http: Http, private route: ActivatedRoute) {
+
+    }
 
     authenticateNow(usercreds) {
         var headers = new Headers();
-        var creds = 'email=' + usercreds.username + '&password=' + usercreds.password;
+        var creds = 'username=' + usercreds.username + '&password=' + usercreds.password;
 
         headers.append('Content-Type', 'application/X-www-form-urlencoded');
 

@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="service-details-widget-1">
+            <div class="widget text-left">
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <h4>
+                            {{radius_service_details?.id || 'NULL'}}
+                        </h4>
+                    </div>
+                </div>
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <div class="subtitle">
+                            <i class="sli-info"></i> Radius ID
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="service-details-widget-1">
+            <div class="widget text-left">
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <div class="title">
+                            <i class="sli-user"></i> Username:
+                        </div>
+                        {{radius_service_details?.username || 'NULL'}}
+                    </div>
+                </div>
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <div class="title">
+                            <i class="sli-lock"></i> Password:
+                        </div>
+                        {{radius_service_details?.password || 'NULL'}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="service-details-widget-1">
+            <div class="widget text-left">
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <h5>{{radius_service_details?.static_ip || 'NULL'}} </h5>
+                    </div>
+                </div>
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <div class="subtitle">
+                            <span><i class="sli-globe"></i> Static IP </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="service-details-widget-1">
+            <div class="widget text-left">
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <h5>{{radius_service_details?.garden || 'NULL'}} </h5>
+                    </div>
+                </div>
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <div class="subtitle">
+                            <span><i class="sli-globe"></i> Garden </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="service-details-widget-1">
+            <div class="widget text-left">
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <h5>{{radius_service_details?.shape || 'NULL'}} </h5>
+                    </div>
+                </div>
+                <div class="row flex-items-xs-middle">
+                    <div class="col">
+                        <div class="subtitle">
+                            <span><i class="sli-globe"></i> Shape </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

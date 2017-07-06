@@ -21,6 +21,7 @@ export class AppComponent {
     public collapsed: boolean = false;//true,false
     public controller: string;
     public view: string;
+    public service_id: string;
 
     constructor(private router: Router) {
 
@@ -33,6 +34,8 @@ export class AppComponent {
             collapsed: this.collapsed,
             logo: this.logo
         };
+
+       // window.localStorage.setItem('service_id', state.url.substr(state.url.lastIndexOf('/') + 1));
 
         //set attributes before page is loaded. this can be removed in production
         //alternatively you can set them in the index.html
@@ -67,6 +70,8 @@ export class AppComponent {
 
                 const copy = Object.assign({}, val);
                 const url = copy.url;
+
+                window.localStorage.setItem('service_id', url.substr(url.lastIndexOf('/') + 1));
 
                 if (_.includes(emptyView1, url)) {
                     self['layout'] = 'empty-view-1';

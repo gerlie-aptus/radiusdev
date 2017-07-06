@@ -15,6 +15,7 @@ import {Navbar1Component} from './elements/navbar-1';
 import {RightSidebar1Component} from './elements/right-sidebar-1';
 import {TopNavigation1Component} from './elements/top-navigation-1';
 import {TopNavigation2Component} from './elements/top-navigation-2';
+import {Messages} from './elements/messages';
 
 //Radius
 import {routing}  from './app.routing';
@@ -26,6 +27,8 @@ import {AuthlogsComponent} from './authlogs/authlogs.component';
 import {ServicehistoryComponent} from './servicehistory/servicehistory.component';
 import {AccountsComponent} from './accounts/list';
 import {LoginComponent} from './pages/login.component';
+import { ServicedetailsComponent } from './servicedetails/view';
+import { NavigationService } from './services/navigation.service';
 
 
 @NgModule({
@@ -41,13 +44,15 @@ import {LoginComponent} from './pages/login.component';
         RightSidebar1Component,
         TopNavigation1Component,
         TopNavigation2Component,
+        Messages,
 
         ManagementComponent,
         UsageComponent,
         AuthlogsComponent,
         ServicehistoryComponent,
         LoginComponent,
-        AccountsComponent
+        AccountsComponent,
+        ServicedetailsComponent
     ],
     imports: [
         BrowserModule,
@@ -63,7 +68,7 @@ import {LoginComponent} from './pages/login.component';
          { path: '**', component: ErrorPageComponent }
          ])*/
     ],
-    providers: [AuthManager, AuthService],
+    providers: [AuthManager, AuthService, NavigationService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

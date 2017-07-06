@@ -16,7 +16,7 @@
                 <div class="section-title">{{menu.title}}</div>
                 <ul class="list-unstyled">
                     <li *ngFor="let items of menu.items">
-                        <a *ngIf="items.items.length === 0" routerLink="{{items.url}}" class="btn btn-default btn-flat btn-sidebar btn-sidebar-1">
+                        <a *ngIf="items.items.length === 0" routerLink="{{items.url}}/{{service_id}}" class="btn btn-default btn-flat btn-sidebar btn-sidebar-1">
                             <i class="{{items.icon}}"></i>
                             <span class="title">{{items.title}}</span>
                         </a>
