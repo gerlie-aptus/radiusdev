@@ -27,6 +27,8 @@ import {AuthlogsComponent} from './authlogs/authlogs.component';
 import {ServicehistoryComponent} from './servicehistory/servicehistory.component';
 import {AccountsComponent} from './accounts/list';
 import {LoginComponent} from './pages/login.component';
+import { ServicedetailsComponent } from './servicedetails/view';
+import {DashboardComponent} from "./dashboards/dashboard";
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import {LoginComponent} from './pages/login.component';
         AuthlogsComponent,
         ServicehistoryComponent,
         LoginComponent,
-        AccountsComponent
+        AccountsComponent,
+        ServicedetailsComponent
     ],
     imports: [
         BrowserModule,
@@ -59,6 +62,7 @@ import {LoginComponent} from './pages/login.component';
         routing,
         AuthModule,
         ReactiveFormsModule,
+        DashboardComponent
         /*RouterModule.forRoot([
          { path: '', component: EmptyPageComponent },
          { path: 'pages/empty-page', component: EmptyPageComponent },
